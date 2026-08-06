@@ -404,7 +404,7 @@ Revision A
 
 ✓ Samirob/diymore PD65W DC input
 
-✓ INA226 (main bus, PCB shunt 10mΩ)
+✓ INA226 (main bus, PCB shunt 2mΩ)
 
 ✓ IRLB8721 + LM5050-1
 

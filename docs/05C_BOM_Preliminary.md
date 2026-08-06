@@ -22,7 +22,7 @@ Distribution
 Fan
 
 - MP1584 mini module
-- Fan header 4-pin ×2
+- Fan header 4-pin ×3 (J6, J7, J9 — J9 dự phòng cho quạt bổ sung)
 - Fan 4040 4-pin PWM ×1 (mua sau)
 
 Logic

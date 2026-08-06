@@ -40,7 +40,7 @@ Tổng công suất danh nghĩa:
 
 Nguồn
 
-Mean Well LRS-350-24
+Mean Well RSP-500-24
 
 Output
 
@@ -48,11 +48,11 @@ Output
 
 Rated Power
 
-350W
+504W
 
 Rated Current
 
-14.6A
+21A
 
 ---
 
@@ -153,17 +153,33 @@ Thiết kế bus
 
 # 10. Safety Margin
 
+## Bus (copper/trace design)
+
 Bus
 
 20A
 
 Expected
 
-≈14A
+≈14.2A
 
 Margin
 
 ≈30%
+
+## PSU (Mean Well RSP-500-24)
+
+Rated Current
+
+21A
+
+Expected
+
+≈14.2A
+
+Margin
+
+≈48%
 
 ---
 
@@ -280,7 +296,7 @@ Cần:
 
 | Hạng mục | Giá trị |
 |----------|---------:|
-| PSU | 350W |
+| PSU | 504W |
 | USB PD | 325W |
 | Logic | ~3W |
 | Fan | ~12W |
@@ -307,7 +323,7 @@ Revision A
 
 ✓ 5 × PD65W
 
-✓ Mean Well LRS-350-24
+✓ Mean Well RSP-500-24
 
 ✓ 20A Main Bus
 

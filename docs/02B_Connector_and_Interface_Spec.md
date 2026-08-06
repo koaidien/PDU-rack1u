@@ -304,7 +304,31 @@ Maximum Current
 
 ---
 
-# 13. Test Points
+# 13. J9
+
+## PWM Fan Header 3
+
+Type
+
+PC Fan 4 Pin
+
+Pinout
+
+|Pin|Signal|
+|---|------|
+|1|GND|
+|2|+V|
+|3|TACH|
+|4|PWM|
+
+Giống J6 / J7.
+
+Dự phòng — không bắt buộc lắp quạt ở Revision A.
+Chừa sẵn để có thể bổ sung quạt thứ 3 sau này mà không cần sửa PCB.
+
+---
+
+# 14. Test Points
 
 Power Control
 
@@ -358,7 +382,7 @@ GND
 
 ---
 
-# 14. Wire Colors
+# 15. Wire Colors
 
 |Signal|Color|
 |------|------|
@@ -375,7 +399,7 @@ GND
 
 ---
 
-# 15. Wire Gauge
+# 16. Wire Gauge
 
 |Current|Recommended|
 |---------|-----------|
@@ -387,7 +411,7 @@ GND
 
 ---
 
-# 16. Maximum Cable Length
+# 17. Maximum Cable Length
 
 |Interface|Max Length|
 |----------|-----------|
@@ -400,7 +424,7 @@ Nếu vượt quá cần xem xét lại bố trí cơ khí.
 
 ---
 
-# 17. Connector Orientation
+# 18. Connector Orientation
 
 Nguyên tắc:
 
@@ -410,7 +434,7 @@ Nguyên tắc:
 
 ---
 
-# 18. Labeling Rules
+# 19. Labeling Rules
 
 Mọi connector đều phải có silkscreen:
 
@@ -441,7 +465,7 @@ Không chỉ ghi J1, J2.
 
 ---
 
-# 19. Reserved Interfaces
+# 20. Reserved Interfaces
 
 Dành cho Revision B trở đi.
 
@@ -477,7 +501,7 @@ Reserved
 
 ---
 
-# 20. Interface Freeze
+# 21. Interface Freeze
 
 Các interface sau được coi là đã khóa (Revision A):
 
@@ -496,5 +520,7 @@ Các interface sau được coi là đã khóa (Revision A):
 ✓ J7 Fan2
 
 ✓ J8 AUX OUT
+
+✓ J9 Fan3 (dự phòng, optional)
 
 Mọi thay đổi phải cập nhật CHANGELOG và tăng Revision.

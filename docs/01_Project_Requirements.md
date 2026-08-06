@@ -21,9 +21,7 @@ Input
 
 Main PSU
 
-- Mean Well LRS-350-24
-or
-- Mean Well LRS-450-24
+- Mean Well RSP-500-24
 
 Output
 

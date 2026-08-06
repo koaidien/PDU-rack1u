@@ -439,7 +439,7 @@ Revision A
 
 ✓ Soft Latch điều khiển qua EN pin
 
-✓ INA226 main bus (PCB shunt 10mΩ)
+✓ INA226 main bus (PCB shunt 2mΩ)
 
 ✓ INA226 per-port footprint dự phòng (Revision B)
 
