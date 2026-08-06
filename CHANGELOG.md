@@ -29,6 +29,7 @@
 - MP1584 Fan Board
 - Soft Latch
 - High-side MOSFET
+- Fan header: **3× PWM 4-pin (J6, J7, J9)** — J9 dự phòng cho quạt bổ sung, không bắt buộc lắp ở Revision A
 
 ### AC
 
@@ -44,4 +45,14 @@
 - OLED
 - OLED Statistics
 - Temperature Monitoring
+
+---
+
+### Documentation Fixes (2026-08-07)
+
+- **01_Project_Requirements.md**: đồng bộ Main PSU thành Mean Well RSP-500-24 (trước đó ghi LRS-350-24 / LRS-450-24, không khớp Component Decisions).
+- **04B_Power_Budget.md**: đồng bộ Input Power (504W / 21A) và Design Freeze theo RSP-500-24; bổ sung mục margin riêng cho PSU (~48%) bên cạnh margin bus (~30%).
+- **04A_Protection_Design.md** / **04C_Component_Selection.md**: sửa lỗi đảo giá trị shunt INA226 trong mục Freeze — main bus **2mΩ** (không phải 10mΩ), khớp với Component Selection §5 và BOM.
+- **02B_Connector_and_Interface_Spec.md**: thêm **J9 — PWM Fan Header 3** (dự phòng), renumber các mục 13→21 theo sau; cập nhật Interface Freeze.
+- **05C_BOM_Preliminary.md**: cập nhật số lượng fan header từ ×2 lên ×3.
 
