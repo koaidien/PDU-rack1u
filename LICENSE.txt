@@ -1,0 +1,18 @@
+Hardware Design License
+
+Author:
+<Project Owner>
+
+License:
+
+CERN-OHL-S Version 2 Recommended
+
+PCB
+3D Models
+Schematics
+Firmware
+
+are intended to be released under the same license.
+
+Third-party modules
+remain under their respective licenses.
