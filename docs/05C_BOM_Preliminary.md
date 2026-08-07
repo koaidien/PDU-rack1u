@@ -6,9 +6,9 @@ Power
 
 - Mean Well RSP-500-24
 - Main Fuse 20A Mini Blade
-- TVS SMBJ28A (cần xác nhận giá trị)
-- IRLB8721PBF (NMOS, TO-220)
-- LM5050-1 (LCSC C473393, SC70-5)
+- TVS SMBJ30A (standoff 30V, clamp 48.4V max)
+- IRFB4110PBF (NMOS, 100V, TO-220AB)
+- LM74700-Q1 (LCSC LM74700QDBVRQ1, SOT-23-6)
 - INA226 (PCB, shunt **R002 2mΩ 2512 3W 1%** cho main bus)
 - Shunt per-port (Rev B): **R010 10mΩ 2512 3W 1%** (thay R100 trên module Feiyang)
 

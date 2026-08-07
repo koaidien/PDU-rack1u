@@ -146,11 +146,13 @@ Chức năng
 - Giảm ảnh hưởng từ việc đóng/ngắt tải.
 - Bảo vệ MOSFET và module PD.
 
-Ưu tiên
+Đã chọn
 
-SMBJ Series.
+**SMBJ30A** (standoff 30V, breakdown min 33.3V, clamping voltage tối đa 48.4V, 600W)
 
-Điện áp sẽ xác nhận khi hoàn thiện schematic.
+Lý do chọn 30V thay vì 28V
+
+Mean Well RSP-500-24 có Output Voltage ADJ Range 20~26.4V và OVP trip range 27.6~32.4V. Với SMBJ28A (breakdown min 31.1V), một lỗi OVP khiến áp vọt tới 32.4V sẽ khiến TVS dẫn liên tục trước khi PSU tự ngắt. SMBJ30A (breakdown min 33.3V) nằm trên toàn bộ dải OVP fault (tối đa 32.4V), tránh được tình huống này.
 
 ---
 
@@ -158,16 +160,20 @@ SMBJ Series.
 
 Sử dụng
 
-N-Channel MOSFET (IRLB8721PBF) + LM5050-1 gate driver
+N-Channel MOSFET (IRFB4110PBF) + LM74700-Q1 ideal diode controller
 
 Không sử dụng PMOS hoặc diode nối tiếp.
 
 Lý do
 
-- Sụt áp thấp (~0.11V @ 14A)
-- Tỏa nhiệt thấp (~1.6W, không cần heatsink)
+- Sụt áp thấp (~0.05~0.06V @ 14.2A, MOSFET gần full-on ở dòng thiết kế)
+- Tỏa nhiệt thấp (~0.75~0.9W, không cần heatsink — thấp hơn cả phương án trước)
 - Hiệu suất cao
-- Điều khiển Soft Latch qua pin EN của LM5050-1
+- Điều khiển Soft Latch qua pin EN của LM74700-Q1 (kéo EN xuống thấp → Gate về 0V, MOSFET off; nối EN lên ANODE nếu muốn always-on)
+
+Đã thay thế (xem CHANGELOG)
+
+IRLB8721PBF (Vds 30V) + LM5050-1 — không đủ margin điện áp so với TVS (ban đầu SMBJ28A, nay là SMBJ30A, clamping voltage tối đa 48.4V), có thể khiến MOSFET bị quá áp khi TVS dẫn.
 
 ---
 
@@ -435,7 +441,7 @@ Revision A
 
 ✓ TVS bảo vệ bus 24V
 
-✓ IRLB8721 (NMOS) + LM5050-1 (gate driver)
+✓ IRFB4110PBF (NMOS, 100V) + LM74700-Q1 (ideal diode controller)
 
 ✓ Soft Latch điều khiển qua EN pin
 

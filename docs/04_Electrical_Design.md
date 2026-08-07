@@ -337,9 +337,21 @@ High-side
 
 Low RDS(on)
 
-30V hoặc cao hơn
+Vds ≥ margin tối thiểu 25% so với **clamping voltage tối đa của TVS đặt phía trước** (không chỉ so với 24V bus danh nghĩa).
 
-Margin tối thiểu 25%.
+Revision A
+
+TVS SMBJ30A: clamping voltage tối đa 48.4V
+
+↓
+
+Yêu cầu tối thiểu: Vds ≥ 48.4V × 1.25 ≈ 60.5V
+
+↓
+
+Đã chọn: **IRFB4110PBF (Vds 100V, Rds(on) 3.7mΩ typ)** — margin ~107%
+
+Lịch sử: Revision A ban đầu dùng IRLB8721PBF (30V) + TVS SMBJ28A, không đủ margin. Đã đổi MOSFET sang IRFB4110PBF, sau đó đổi TVS sang SMBJ30A để có margin tốt hơn so với dải OVP của PSU (xem CHANGELOG).
 
 ---
 
@@ -347,7 +359,7 @@ Margin tối thiểu 25%.
 
 24V System
 
-SMBJ Series
+**SMBJ30A** (standoff 30V, clamp max 48.4V)
 
 Đặt sát đầu vào nguồn.
 
@@ -435,6 +447,8 @@ Nhiệt độ
 
 Không vận hành linh kiện ở giới hạn định mức.
 
+Lưu ý: với linh kiện đặt ngay sau TVS (ví dụ MOSFET bảo vệ), margin điện áp phải tính theo clamping voltage của TVS, không chỉ theo điện áp bus danh nghĩa (xem §15).
+
 ---
 
 # 21. Failure Behaviour
@@ -517,8 +531,8 @@ Relay
 
 ✓ Branch Fuse
 
-✓ TVS
+✓ TVS (SMBJ30A)
 
-✓ High-side MOSFET
+✓ High-side MOSFET (IRFB4110PBF + LM74700-Q1, Vds margin tính theo TVS clamp)
 
 Mọi thay đổi phải cập nhật CHANGELOG.

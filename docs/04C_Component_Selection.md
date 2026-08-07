@@ -185,29 +185,35 @@ Phương án: NMOS High-side + Charge Pump Controller
 
 ## Switch
 
-IRLB8721PBF
+IRFB4110PBF
 
 - Loại: N-Channel MOSFET
-- Vds: 30V
-- Id: 62A
-- Rds(on): 8mΩ
-- Package: TO-220
-- Tổn hao @ 14A: ~1.6W (không cần heatsink)
+- Vds: 100V
+- Id: 180A (silicon limited) / 120A (package limited)
+- Rds(on): 3.7mΩ typ / 4.5mΩ max
+- Package: TO-220AB
+- Tổn hao @ 14.2A: ~0.75~0.9W (không cần heatsink, thấp hơn phương án trước dù Vds cao hơn nhiều)
 - Nguồn: LCSC / phổ biến
 
-## Gate Driver
+Lý do chọn 100V thay vì 30V
 
-LM5050-1 (TI)
+TVS (SMBJ30A, breakdown voltage tối thiểu 33.3V, clamping voltage tối đa 48.4V tại dòng xung đỉnh) đã vượt quá Vds 30V của lựa chọn trước (IRLB8721PBF), gần như không có margin khi TVS dẫn. IRFB4110PBF cho margin ~107% so với mức clamp 48.4V này.
 
-- Chức năng: High-side NMOS controller + charge pump
-- Vin: 5~75V (phù hợp 24V)
-- Package: SC70-5
-- LCSC: C473393 (~$1.17)
-- Điều khiển Soft Latch qua pin EN
+## Gate Driver / Ideal Diode Controller
 
-Alternative
+LM74700-Q1 (TI)
 
-LM74700 (TI) — LCSC, tương tự LM5050, gate drive mạnh hơn
+- Chức năng: Ideal diode controller tích hợp charge pump gate drive, chuyên dụng cho reverse polarity protection
+- Vin: 3.2~65V (phù hợp 24V, margin ~34% so với TVS clamp 48.4V)
+- Sụt áp: quy về 20mV ở dòng thấp; ở dòng thiết kế ~14.2A, MOSFET được kéo gần full-on nên sụt áp thực tế theo Rds(on) (~57mV)
+- Đáp ứng reverse current: <0.75µs
+- Package: SOT-23-6 (DBV) — dễ hàn tay hơn SC70-5 của LM5050-1
+- LCSC: LM74700QDBVRQ1
+- Điều khiển Soft Latch qua pin EN (kéo EN xuống thấp → Gate về 0V, MOSFET off; nối EN lên ANODE nếu muốn always-on)
+
+Đã thay thế (xem CHANGELOG)
+
+IRLB8721PBF (30V) + LM5050-1 — không đủ margin Vds so với TVS SMBJ28A.
 
 ⚠️ Không dùng SY6280 — chỉ hỗ trợ đến 5.5V.
 
@@ -215,13 +221,17 @@ LM74700 (TI) — LCSC, tương tự LM5050, gate drive mạnh hơn
 
 # 9. TVS
 
-SMBJ Series
+**SMBJ30A**
 
-Điện áp kẹp phù hợp bus 24V
+- Standoff: 30V
+- Breakdown voltage min: 33.3V
+- Clamping voltage max: 48.4V @ Ipp 12.4A (10/1000µs)
+- Peak Pulse Power: 600W
+- Package: SMB
 
-Package
+Lý do chọn 30V
 
-SMB
+Mean Well RSP-500-24 có ADJ range 20~26.4V và OVP trip range 27.6~32.4V. SMBJ30A (breakdown min 33.3V) nằm an toàn trên cả dải OVP fault (tối đa 32.4V), tránh TVS dẫn liên tục khi PSU gặp lỗi OVP — điều mà SMBJ28A (breakdown min 31.1V) không đảm bảo được.
 
 ---
 
@@ -406,7 +416,9 @@ Revision A
 
 ✓ INA226 (main bus, PCB shunt 2mΩ)
 
-✓ IRLB8721 + LM5050-1
+✓ IRFB4110PBF + LM74700-Q1
+
+✓ TVS SMBJ30A
 
 ✓ DS18B20 × 2
 
